@@ -7,6 +7,7 @@ mais limpa, com **Devlog** e links da Steam.
 ## Estrutura
 
 ```
+
 LandingPageCode/
 ├── index.html                     ← página única
 ├── README.md
