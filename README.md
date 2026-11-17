@@ -1,96 +1,91 @@
-# DoubleCup Studios — Landing Page (LandingPageCode)
+<div align="center">
 
-Reconstrução da LandingPage10 (a que está em https://doublecup.vercel.app/), mantendo o visual
-roxo/PS1, o copo 3D (com o "glitch" da textura preservado) e o layout de landing page — agora
-mais limpa, com **Devlog** e links da Steam.
+<img src="assets/images/gallery/key-art.jpg" alt="DoubleCup Studios" width="520">
 
-## Estrutura
+# DoubleCup Studios
 
-```
+### *Sombras Simplificadas. Abismos Profundos.*
 
-LandingPageCode/
-├── index.html                     ← página única
-├── README.md
-├── devlog/<id>/index.html         ← GERADO: página de compartilhamento de cada post (preview)
-├── tools/build-share-pages.js     ← gera a pasta devlog/ a partir do devlog-data.js
-└── assets/
-    ├── css/styles.css             ← todo o estilo
-    ├── js/
-    │   ├── cup-geometry.js        ← geometria do copo 3D (NÃO EDITAR — gera o glitch)
-    │   ├── i18n.js                ← todos os textos EN / PT-BR
-    │   ├── devlog-data.js         ← posts do Devlog  ← é aqui que você publica atualizações
-    │   └── main.js                ← viewer 3D, devlog, lightbox, menu, idioma
-    └── images/
-        ├── favicon*.png
-        ├── gallery/               ← imagens da seção "Trabalhos em produção"
-        └── devlog/                ← coloque aqui as imagens dos posts
-```
+**Estúdio indie brasileiro · Dark Fantasy Low Poly · Estreia na Steam em 2027**
 
-## Como rodar
+[![Site oficial](https://img.shields.io/badge/Site_oficial-doublecup.vercel.app-9B30FF?style=for-the-badge)](https://doublecup.vercel.app/)
+[![Discord](https://img.shields.io/badge/Discord-Entre_na_comunidade-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/XQsXQTaBcH)
+[![Steam Group](https://img.shields.io/badge/Steam-Grupo-1b2838?style=for-the-badge&logo=steam&logoColor=white)](https://steamcommunity.com/groups/DoubleCupStudios)
+[![Steam Curator](https://img.shields.io/badge/Steam-Curadoria-1b2838?style=for-the-badge&logo=steam&logoColor=white)](https://store.steampowered.com/curator/46138982/)
 
-Abrir o `index.html` direto no navegador já funciona (não usa `fetch`). Para testar como no Vercel:
+</div>
 
-```bash
-python -m http.server 8080 --directory LandingPageCode
-```
+---
 
-Deploy no Vercel: apontar o projeto para a pasta `LandingPageCode` (site estático, sem build).
+## Bem-vindo ao abismo
 
-## Como postar uma atualização no Devlog
+A **DoubleCup Studios** nasceu em 2026, no Brasil, do encontro entre a precisão da Tecnologia da
+Informação e uma paixão antiga por jogos. Somos um estúdio de **duas pessoas**: um desenvolvedor
+que constrói o jogo sozinho (código, sistemas e gameplay) e um designer que dá forma aos
+personagens e ao mundo.
 
-1. Coloque as imagens em `assets/images/devlog/`.
-2. Abra `assets/js/devlog-data.js`, copie o **TEMPLATE** do topo e cole no início da lista.
-3. Preencha `id`, `date` (`AAAA-MM-DD`), `category` (`update`, `devlog`, `art`, `news`),
-   `version` (ex.: `'v0.0.2'` ou `null`), `title`, `summary`, `body` (HTML) e `images` — sempre em `en` e `pt`.
-4. Gere as páginas de compartilhamento (precisa do Node instalado):
+Estamos criando uma **dark fantasy low poly**: formas simples, atmosfera densa e mecânicas sólidas.
+Nosso primeiro título chega à **Steam em 2027**.
 
-   ```bash
-   node tools/build-share-pages.js
-   ```
+> *"Grandes mundos não precisam de milhões de triângulos, mas de uma atmosfera impecável e mecânicas sólidas."*
+> **DoubleCup Studios**
 
-5. Faça commit (incluindo a pasta `devlog/` gerada) e o deploy. Os posts são ordenados por data
-   automaticamente; os 5 mais recentes aparecem na página e o resto fica atrás de "Ver todas as atualizações".
+## O que nos define
 
-### Link para compartilhar (com preview do post)
+| ▲ Low Poly como Linguagem | ◆ Dark Fantasy Visceral | ⬡ Feito a Quatro Mãos |
+|---|---|---|
+| A estética poligonal não é limitação: é uma escolha narrativa. Cada triângulo existe para evocar o desconhecido. | Mundos densos, melancólicos e desafiadores, onde cada canto respira mistério. | Um dev vindo da TI e um designer com olhar para o estranho. Precisão técnica a serviço da arte. |
 
-Use **`https://doublecup.vercel.app/devlog/<id>/`**, que é o link copiado pelo botão "Copiar link" dentro do post.
-No Discord, WhatsApp, X etc. esse link mostra o título, o resumo e a **primeira imagem do post**
-(ou a imagem em `cover`, se definida). Quem clica é levado direto ao post no site.
+## Acompanhe o desenvolvimento
 
-O link antigo `/#devlog/<id>` continua abrindo o post, mas o preview dele sempre será o do site
-(logo DoubleCup): as redes sociais não leem a parte depois do `#` nem executam JavaScript.
+O jogo está em **desenvolvimento ativo**, e cada passo vai para o **Devlog** do site oficial:
+notas de versão, progresso, artes e bastidores.
 
-O idioma do preview é definido em `SHARE_LANG` dentro de `tools/build-share-pages.js` (padrão: `pt`).
+<div align="center">
+<img src="assets/images/devlog/2026-11-16-rig-unity.jpg" alt="Rig e avatar Humanoid do personagem na Unity" width="760">
 
-> As redes guardam previews em cache. Se um link já foi postado antes da mudança, o preview antigo
-> pode continuar aparecendo nele por um tempo; um link novo já sai com a imagem certa.
+*Rig e animação de personagens em andamento.*
+[Leia o post completo →](https://doublecup.vercel.app/devlog/character-rig-animation/)
+</div>
 
-> ⚠️ Os posts `skull-operative` e `v0-0-1` são **exemplos** feitos com as imagens que já existiam
-> na galeria — troque datas e textos pelos reais (ou apague-os).
+## Por dentro da produção
 
-## O que foi encontrado no site atual e corrigido
+<div align="center">
+<img src="assets/images/gallery/skull-operative.jpg" alt="Skull Operative" width="250">
+<img src="assets/images/gallery/base-mesh.jpg" alt="Base mesh em wireframe" width="280">
+<img src="assets/images/gallery/prototype-engine.jpg" alt="Protótipo in-engine" width="170">
+</div>
 
-| Problema na LandingPage10 | Correção |
+## Faça parte da jornada
+
+| | |
 |---|---|
-| Convite do Discord `XGrxY46A` expirado ("Unknown Invite") | Novo convite permanente `discord.gg/XQsXQTaBcH` |
-| Stat "<10 Elite Team" e "∞ Projects in stealth" não condiziam com a realidade | "2 — Equipe · Dev solo + Designer solo", "2026 — Fundação" |
-| 🇧🇷 em emoji aparecia como letras "BR" no Windows | "BR" estilizado de propósito |
-| Letreiro "DOUBLECUP" em SVG desenhado à mão com polígonos quebrados (E, C, P deformados) | Wordmark em fonte block (Bungee) com extrusão 3D roxa via CSS — mesmo estilo, nítido |
-| Galeria com rótulos trocados (a arte do copo aparecia como "Shadow Warrior" e "Dark Operative") e imagem duplicada | Rótulos corretos, duplicata removida |
-| Print do base mesh mostrando a UI da ferramenta (botão "+$20", painel) | Imagem recortada |
-| Imagens JPEG salvas com extensão `.png` | Renomeadas para `.jpg` |
-| Katanas (imagens finas e altas) cortadas pelo `cover` | Exibidas inteiras (`contain`) |
-| Sem menu no celular (links somem abaixo de 768px) | Menu hambúrguer |
-| Cursor quadrado customizado (aparecia fixo no canto no celular) | Removido — cursor padrão |
-| Tradução PT incompleta (manifesto não traduzia, títulos fixos no JS) e idioma não era lembrado | Dicionário único `i18n.js`, detecta PT pelo navegador e lembra a escolha |
-| Ao arrastar o copo depois da rotação automática, ele "pulava" de volta | Arrasto continua do ângulo atual |
-| Render 3D rodando sempre, mesmo fora da tela | Pausa quando o hero sai da tela / aba oculta |
-| Sem fallback se o Three.js falhar | Mostra imagem estática do copo |
-| Sem meta tags de compartilhamento | Open Graph / Twitter card |
-| Animações sem respeitar `prefers-reduced-motion` | Respeita |
-| Muitos efeitos competindo (flicker em tudo, grid piscando, 8 seções com divisórias) | Efeitos mais sutis, Essência + Manifesto unidos, nav transparente no topo |
+| 🌐 **Site oficial** | [doublecup.vercel.app](https://doublecup.vercel.app/) |
+| 💬 **Discord** | [discord.gg/XQsXQTaBcH](https://discord.gg/XQsXQTaBcH) |
+| 🎮 **Grupo Steam** | [steamcommunity.com/groups/DoubleCupStudios](https://steamcommunity.com/groups/DoubleCupStudios) |
+| ⭐ **Curadoria Steam** | [store.steampowered.com/curator/46138982](https://store.steampowered.com/curator/46138982/) |
+| ✉️ **Parcerias e contato** | contato@doublecup.net |
 
-## Dependências externas
+Seja para parcerias, imprensa, oportunidades ou só para acompanhar a jornada: estamos
+construindo algo especial, e queremos você junto.
 
-- Three.js **r128** (cdnjs) — manter essa versão para preservar o visual do copo.
-- Google Fonts: VT323, Share Tech Mono, Cinzel, Bungee.
+---
+
+<div align="center">
+
+### 🇺🇸 In English
+
+**DoubleCup Studios** is a two-person indie studio from **Brazil**, founded in 2026: one solo
+developer building the game, one designer shaping its characters and world. We are crafting a
+**low poly dark fantasy** (simple shapes, dense atmosphere, solid mechanics), with our first title
+arriving on **Steam in 2027**.
+
+Follow the devlog at **[doublecup.vercel.app](https://doublecup.vercel.app/)**, join our
+**[Discord](https://discord.gg/XQsXQTaBcH)** and follow us on
+**[Steam](https://store.steampowered.com/curator/46138982/)**.
+
+---
+
+© 2026 DoubleCup Studios · Brasil · Todos os direitos reservados
+
+</div>
