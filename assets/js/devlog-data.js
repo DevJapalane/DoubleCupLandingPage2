@@ -5,8 +5,10 @@
 //  HOW TO POST A NEW UPDATE
 //  1. Put the images in  assets/images/devlog/  (jpg/png/webp).
 //  2. Copy the TEMPLATE below, paste it at the TOP of the list and fill it in.
-//  3. Save and deploy. Posts are sorted by date automatically (newest first);
-//     the 5 most recent show on the page, the rest behind "View all updates".
+//  3. Run  node tools/build-share-pages.js  (creates the shareable link with the
+//     post's image as preview: https://site/devlog/<id>/), then commit and deploy.
+//     Posts are sorted by date automatically (newest first); the 5 most recent
+//     show on the page, the rest behind "View all updates".
 //
 //  FIELDS
 //  id        unique, url-friendly (letters, numbers, dashes). Used in the

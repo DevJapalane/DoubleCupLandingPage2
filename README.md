@@ -11,6 +11,8 @@ mais limpa, com **Devlog** e links da Steam.
 LandingPageCode/
 ├── index.html                     ← página única
 ├── README.md
+├── devlog/<id>/index.html         ← GERADO: página de compartilhamento de cada post (preview)
+├── tools/build-share-pages.js     ← gera a pasta devlog/ a partir do devlog-data.js
 └── assets/
     ├── css/styles.css             ← todo o estilo
     ├── js/
@@ -40,10 +42,28 @@ Deploy no Vercel: apontar o projeto para a pasta `LandingPageCode` (site estáti
 2. Abra `assets/js/devlog-data.js`, copie o **TEMPLATE** do topo e cole no início da lista.
 3. Preencha `id`, `date` (`AAAA-MM-DD`), `category` (`update`, `devlog`, `art`, `news`),
    `version` (ex.: `'v0.0.2'` ou `null`), `title`, `summary`, `body` (HTML) e `images` — sempre em `en` e `pt`.
-4. Faça o deploy. Os posts são ordenados por data automaticamente; os 5 mais recentes aparecem
-   na página e o resto fica atrás de "Ver todas as atualizações".
+4. Gere as páginas de compartilhamento (precisa do Node instalado):
 
-Cada post tem um link próprio para compartilhar: `https://doublecup.vercel.app/#devlog/<id>`.
+   ```bash
+   node tools/build-share-pages.js
+   ```
+
+5. Faça commit (incluindo a pasta `devlog/` gerada) e o deploy. Os posts são ordenados por data
+   automaticamente; os 5 mais recentes aparecem na página e o resto fica atrás de "Ver todas as atualizações".
+
+### Link para compartilhar (com preview do post)
+
+Use **`https://doublecup.vercel.app/devlog/<id>/`**, que é o link copiado pelo botão "Copiar link" dentro do post.
+No Discord, WhatsApp, X etc. esse link mostra o título, o resumo e a **primeira imagem do post**
+(ou a imagem em `cover`, se definida). Quem clica é levado direto ao post no site.
+
+O link antigo `/#devlog/<id>` continua abrindo o post, mas o preview dele sempre será o do site
+(logo DoubleCup): as redes sociais não leem a parte depois do `#` nem executam JavaScript.
+
+O idioma do preview é definido em `SHARE_LANG` dentro de `tools/build-share-pages.js` (padrão: `pt`).
+
+> As redes guardam previews em cache. Se um link já foi postado antes da mudança, o preview antigo
+> pode continuar aparecendo nele por um tempo; um link novo já sai com a imagem certa.
 
 > ⚠️ Os posts `skull-operative` e `v0-0-1` são **exemplos** feitos com as imagens que já existiam
 > na galeria — troque datas e textos pelos reais (ou apague-os).

@@ -624,6 +624,16 @@ const Devlog = (function () {
     el.older.addEventListener('click', () => { if (currentIdx < posts.length - 1) open(posts[currentIdx + 1].id, false); });
     el.newer.addEventListener('click', () => { if (currentIdx > 0) open(posts[currentIdx - 1].id, false); });
 
+    // "Copy link" gives the /devlog/<id>/ page: it carries the post's own
+    // preview image/title for Discord, WhatsApp, X… (see tools/build-share-pages.js)
+    const share = document.getElementById('postShare');
+    if (share) share.addEventListener('click', () => {
+      const p = posts[currentIdx];
+      if (!p) return;
+      const url = new URL('devlog/' + encodeURIComponent(p.id) + '/', location.href.split('#')[0]).href;
+      copyText(url).then(() => showToast(t('toast.link')));
+    });
+
     document.addEventListener('keydown', e => {
       if (el.modal.hidden || Lightbox.isOpen()) return;
       if (e.key === 'Escape') close();
@@ -710,13 +720,11 @@ function showToast(html) {
   showToast._t = setTimeout(() => el.classList.remove('show'), 2000);
 }
 
-function initCopyEmail() {
-  const btn = document.getElementById('copyEmailBtn');
-  if (!btn) return;
-  const email = btn.dataset.email;
+// Copy text to the clipboard (with a fallback for older / non-HTTPS browsers)
+function copyText(text) {
   const fallback = () => {
     const ta = document.createElement('textarea');
-    ta.value = email;
+    ta.value = text;
     ta.setAttribute('readonly', '');
     ta.style.position = 'fixed';
     ta.style.opacity = '0';
@@ -725,14 +733,17 @@ function initCopyEmail() {
     try { document.execCommand('copy'); } catch (e) { /* ignore */ }
     document.body.removeChild(ta);
   };
-  btn.addEventListener('click', () => {
-    const done = () => showToast(t('toast.copied'));
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(email).then(done).catch(() => { fallback(); done(); });
-    } else {
-      fallback(); done();
-    }
-  });
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text).catch(fallback);
+  }
+  fallback();
+  return Promise.resolve();
+}
+
+function initCopyEmail() {
+  const btn = document.getElementById('copyEmailBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => copyText(btn.dataset.email).then(() => showToast(t('toast.copied'))));
 }
 
 // ════════════════════════════════════════════════════════
