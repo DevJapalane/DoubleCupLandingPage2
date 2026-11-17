@@ -27,7 +27,7 @@
 //  {
 //    id: 'v0-0-2',
 //    date: '2026-12-01',
-//    category: 'update',
+//    category: 'devlog',
 //    version: 'v0.0.2',
 //    title:   { en: 'Version 0.0.2 — Combat improvements', pt: 'Versão 0.0.2 — Melhorias no combate' },
 //    summary: { en: 'Short line for the list.', pt: 'Linha curta para a lista.' },
@@ -50,7 +50,7 @@ window.DEVLOG_POSTS = [
   {
     id: 'smooth-locomotion-hold-combo',
     date: '2026-11-17',
-    category: 'update',
+    category: 'devlog',
     version: null,
     title: {
       en: 'Smooth walk/run and hold-to-combo',
@@ -227,7 +227,7 @@ window.DEVLOG_POSTS = [
   {
     id: 'v0-0-1',
     date: '2026-09-30',
-    category: 'update',
+    category: 'devlog',
     version: 'v0.0.1',
     title: {
       en: 'Version 0.0.1 — First in-engine prototype',
