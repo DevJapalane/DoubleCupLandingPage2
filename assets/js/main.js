@@ -538,7 +538,7 @@ const Devlog = (function () {
       b.type = 'button';
       b.className = 'post-shot';
       const cap = loc(im.caption);
-      b.innerHTML = `<img src="${escapeHTML(im.src)}" alt="${escapeHTML(cap)}" loading="lazy">${cap ? `<span>${escapeHTML(cap)}</span>` : ''}`;
+      b.innerHTML = `<img src="${escapeHTML(im.src)}" alt="${escapeHTML(cap)}">${cap ? `<span>${escapeHTML(cap)}</span>` : ''}`;
       b.addEventListener('click', () => Lightbox.open(imgs.map(x => ({ src: x.src, alt: loc(x.caption), title: loc(x.caption), tag: loc(p.title) })), i));
       el.gallery.appendChild(b);
     });

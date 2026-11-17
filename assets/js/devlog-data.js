@@ -48,6 +48,66 @@
 window.DEVLOG_POSTS = [
 
   {
+    id: 'smooth-locomotion-hold-combo',
+    date: '2026-11-17',
+    category: 'update',
+    version: null,
+    title: {
+      en: 'Smooth walk/run and hold-to-combo',
+      pt: 'Andar/correr fluido e combo segurando o botão'
+    },
+    summary: {
+      en: 'No more bobbing head while moving, feet planted on the ground, and the full 3-hit combo by holding the left mouse button.',
+      pt: 'Fim da cabeça subindo e descendo ao se mover, pés firmes no chão e o combo de 3 golpes segurando o botão esquerdo.'
+    },
+    body: {
+      en: `<h3>1. Head bobbing up and down: fixed</h3>
+           <p><strong>Cause:</strong> the body height was recalculated every frame so the lowest point touched the ground. During a stride it followed the geometry of the supporting leg: higher with the leg vertical, lower with the leg angled. Unity also places the body by its center of mass, so the swinging legs moved the hips too. Result: a large, jerky up-and-down motion.</p>
+           <p><strong>Fix:</strong> the standard technique used in games.</p>
+           <ul>
+             <li><strong>Hips:</strong> while moving, they follow the average height over one step, plus a small, smooth wave. Running bounce dropped from 5 to 3 cm and walking bounce from 2 to 1.2 cm.</li>
+             <li><strong>Supporting foot:</strong> <code>HumanoidFootPlanting</code> (the foot IK) now also works while moving and keeps on the ground the foot that the step phase says is planted. The knee absorbs the difference and bends mid-stance, like in a real run.</li>
+             <li><strong>Stepping foot:</strong> when the front leg can't reach the ground, the hips lower smoothly by the average amount needed, without any jerk.</li>
+             <li>No foot goes through the ground.</li>
+             <li><strong>Slopes and steps:</strong> the ground height under each foot is read with a raycast.</li>
+             <li>Idle, airborne and slide work as before.</li>
+           </ul>
+           <p>New option in <code>ProceduralHumanoidAnimator</code>: <strong>Smooth Locomotion Height</strong> (on).</p>
+
+           <h3>2. Hold the left button = the 3 hits</h3>
+           <ul>
+             <li><strong>Click and hold:</strong> the 3 hits come out in sequence.</li>
+             <li><strong>After the third:</strong> holding does nothing else. Release and click (and hold) again for another 3.</li>
+             <li><strong>Release early:</strong> the combo stops at the current hit.</li>
+             <li><strong>Clicks:</strong> still work as before, one hit per click, chaining.</li>
+           </ul>`,
+      pt: `<h3>1. Cabeça subindo e descendo: corrigido</h3>
+           <p><strong>Causa:</strong> a altura do corpo era recalculada a cada quadro para encostar o ponto mais baixo no chão. Durante a passada ela seguia a geometria da perna de apoio: mais alto com a perna vertical, mais baixo com a perna inclinada. O Unity ainda posiciona o corpo pelo centro de massa, então as pernas balançando também mexiam o quadril. Resultado: um sobe-e-desce grande e com trancos.</p>
+           <p><strong>Correção:</strong> é a técnica padrão de jogos.</p>
+           <ul>
+             <li><strong>Quadril:</strong> em movimento, segue a média da altura ao longo de um passo, mais uma ondulação suave e pequena. O bounce da corrida caiu de 5 para 3 cm e o da caminhada de 2 para 1,2 cm.</li>
+             <li><strong>Pé de apoio:</strong> o <code>HumanoidFootPlanting</code> (o IK de pés) agora também age em movimento e mantém no chão o pé que a fase do passo diz estar apoiado. O joelho absorve a diferença e flexiona no meio do apoio, como numa corrida real.</li>
+             <li><strong>Pé que pisa:</strong> quando a perna da frente não alcança o chão, o quadril desce suavemente o necessário, em média, sem criar tranco.</li>
+             <li>Nenhum pé atravessa o chão.</li>
+             <li><strong>Rampas e degraus:</strong> a altura do chão sob cada pé é lida com um raio.</li>
+             <li>Parado, no ar e no slide continua como antes.</li>
+           </ul>
+           <p>Opção nova no <code>ProceduralHumanoidAnimator</code>: <strong>Smooth Locomotion Height</strong> (ligada).</p>
+
+           <h3>2. Segurar o botão esquerdo = os 3 golpes</h3>
+           <ul>
+             <li><strong>Clicar e segurar:</strong> os 3 golpes saem em sequência.</li>
+             <li><strong>Depois do terceiro:</strong> segurar não faz mais nada. É preciso soltar e clicar (e segurar) de novo para outros 3.</li>
+             <li><strong>Soltar antes:</strong> o combo para no golpe atual.</li>
+             <li><strong>Cliques:</strong> continuam funcionando como antes, um golpe por clique, encadeando.</li>
+           </ul>`
+    },
+    images: [
+      { src: 'assets/images/devlog/2026-11-17-locomotion-combo.jpg', caption: { en: 'Locomotion and combo test scene in Unity', pt: 'Cena de testes de locomoção e combo na Unity' } }
+    ]
+  },
+
+  {
     id: 'character-rig-animation',
     date: '2026-11-16',
     category: 'devlog',

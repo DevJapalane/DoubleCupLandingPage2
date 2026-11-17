@@ -403,8 +403,9 @@ main, .site-footer { position: relative; z-index: 2; }
 .post-body figure img, .post-body > img { width: 100%; border: 1px solid var(--line); cursor: zoom-in; }
 .post-body figcaption { font-size: .8rem; color: var(--text-muted); margin-top: .4rem; }
 .post-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; margin-top: 1.8rem; }
-.post-gallery > .post-shot:only-child { aspect-ratio: 16 / 9; }
-.post-gallery > .post-shot:only-child img { object-fit: contain; }
+/* A single image keeps its own proportions (wide or tall), capped in height */
+.post-gallery > .post-shot:only-child { aspect-ratio: auto; display: flex; justify-content: center; }
+.post-gallery > .post-shot:only-child img { width: auto; max-width: 100%; height: auto; max-height: 65vh; object-fit: contain; }
 .post-gallery:empty { display: none; }
 .post-shot { position: relative; padding: 0; border: 1px solid var(--line); background: #0d0015; cursor: zoom-in; overflow: hidden; aspect-ratio: 4 / 3; }
 .post-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s, filter .35s; }
