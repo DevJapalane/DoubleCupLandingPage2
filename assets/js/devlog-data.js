@@ -46,6 +46,50 @@
 window.DEVLOG_POSTS = [
 
   {
+    id: 'character-rig-animation',
+    date: '2026-11-16',
+    category: 'devlog',
+    version: null,
+    title: {
+      en: 'Work in progress: character rig & animation',
+      pt: 'Em andamento: rig e animação de personagens'
+    },
+    summary: {
+      en: 'The player character is now rigged as a Humanoid in Unity, ready to receive animations.',
+      pt: 'O personagem do jogador agora está com rig Humanoid na Unity, pronto para receber animações.'
+    },
+    body: {
+      en: `<p>This week the focus is on bringing our characters to life. The player model got its skeleton and is now configured as a <strong>Humanoid avatar</strong> in Unity, the base we need to animate it and reuse animations across characters.</p>
+           <h3>In progress</h3>
+           <ul>
+             <li>Rig of the player model, with the bones of body, head, arms and legs</li>
+             <li>Humanoid avatar mapping in Unity, with every required bone assigned</li>
+             <li>First movement tests in the Animator</li>
+           </ul>
+           <h3>Next steps</h3>
+           <ul>
+             <li>Hook up movement and combat animations to the player</li>
+             <li>Tweak muscles and joint limits so poses stay clean</li>
+           </ul>`,
+      pt: `<p>Nesta semana o foco é dar vida aos personagens. O modelo do jogador ganhou seu esqueleto e agora está configurado como <strong>avatar Humanoid</strong> na Unity, a base que precisamos para animá-lo e reaproveitar animações entre personagens.</p>
+           <h3>Em andamento</h3>
+           <ul>
+             <li>Rig do modelo do jogador, com os ossos de corpo, cabeça, braços e pernas</li>
+             <li>Mapeamento do avatar Humanoid na Unity, com todos os ossos obrigatórios definidos</li>
+             <li>Primeiros testes de movimentação no Animator</li>
+           </ul>
+           <h3>Próximos passos</h3>
+           <ul>
+             <li>Ligar as animações de movimentação e combate ao jogador</li>
+             <li>Ajustar músculos e limites das articulações para as poses ficarem limpas</li>
+           </ul>`
+    },
+    images: [
+      { src: 'assets/images/devlog/2026-11-16-rig-unity.jpg', caption: { en: 'Humanoid avatar configuration in Unity', pt: 'Configuração do avatar Humanoid na Unity' } }
+    ]
+  },
+
+  {
     id: 'site-relaunch',
     date: '2026-11-05',
     category: 'news',
